@@ -1,11 +1,179 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<div class="landing-page">
+		<header class="header">
+			<div class="header-content">
+				<div class="logo">
+					<img src="/logo.svg" alt="kiddie" class="logo-image">
+				</div>
+				<nav class="nav">
+					<a href="#home">home</a>
+					<a href="#about">about</a>
+					<a href="#demo">demo</a>
+					<a href="#contact">contact</a>
+				</nav>
+			</div>
+		</header>
+
+		<section class="hero">
+			<video class="hero-video" autoplay muted loop playsinline>
+				<source src="/hero.mp4" type="video/mp4">
+			</video>
+			<div class="hero-overlay"></div>
+			<div class="hero-content">
+				<h1 class="hero-title">
+					secure your<br />
+					family's future.
+				</h1>
+				<button class="cta-button">sign up</button>
+			</div>
+		</section>
+	</div>
 </Layout>
+
+<style>
+	.landing-page {
+		width: 100%;
+		min-height: 100vh;
+	}
+
+	.header {
+		background-color: var(--cream);
+		padding: 0.75rem 2rem;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	}
+
+	.header-content {
+		max-width: 1400px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+	}
+
+	.logo-image {
+		transform: translateY(-3px);  
+		height: 2.5rem;
+		width: auto;
+	}
+
+	.nav {
+		display: flex;
+		gap: 2.5rem;
+	}
+
+	.nav a {
+		color: var(--mint-green);
+		text-decoration: none;
+		font-size: 1.1rem;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+
+	.nav a:hover {
+		opacity: 0.7;
+	}
+
+	.hero {
+		position: relative;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		padding: 2rem;
+		padding-top: 8rem;
+		overflow: hidden;
+	}
+
+	.hero-video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: 0;
+	}
+
+	.hero-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.2);
+		z-index: 1;
+	}
+
+	.hero-content {
+		position: relative;
+		max-width: 1400px;
+		margin: 0 auto;
+		width: 100%;
+		z-index: 2;
+	}
+
+	.hero-title {
+		font-size: 5rem;
+		font-weight: 400;
+		color: white;
+		line-height: 1.2;
+		margin-bottom: 2.5rem;
+		letter-spacing: -0.02em;
+		text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+	}
+
+	.cta-button {
+		background-color: var(--mint-green);
+		color: white;
+		border: none;
+		padding: 1rem 2.5rem;
+		font-size: 1.1rem;
+		font-weight: 600;
+		border-radius: 16px;
+		cursor: pointer;
+		transition: all 0.2s;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	}
+
+	.cta-button:hover {
+		background-color: #52b394;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	}
+
+	@media (max-width: 768px) {
+		.header {
+			padding: 1rem;
+		}
+
+		.nav {
+			gap: 1.5rem;
+		}
+
+		.nav a {
+			font-size: 1rem;
+		}
+
+		.hero-title {
+			font-size: 3rem;
+		}
+
+		.cta-button {
+			padding: 0.875rem 2.5rem;
+			font-size: 1rem;
+		}
+	}
+</style>
